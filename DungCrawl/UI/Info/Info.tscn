@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/OtherTabs.png" type="Texture" id=1]
+[ext_resource path="res://UI/Info/Info.gd" type="Script" id=2]
+[ext_resource path="res://UI/new_theme.tres" type="Theme" id=3]
+
+[node name="Info" type="Node2D"]
+z_index = 4096
+script = ExtResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 1 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_scale = Vector2( 0.15, 0.15 )
+theme = ExtResource( 3 )
+text = "hghh"

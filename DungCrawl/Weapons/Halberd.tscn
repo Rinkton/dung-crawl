@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Weapons/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Halberd.png" type="Texture" id=2]
+[ext_resource path="res://CS2D.tscn" type="PackedScene" id=3]
+
+[node name="Halberd" type="Area2D"]
+script = ExtResource( 1 )
+dmg = 5
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CS2D" parent="." instance=ExtResource( 3 )]
