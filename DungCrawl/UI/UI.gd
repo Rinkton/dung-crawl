@@ -4,6 +4,8 @@ extends Node
 func _ready():
 	g.ui = self
 	yield(get_tree().create_timer(0.1), "timeout")
+	g.connect("setted_cur_level", self, "_setted_cur_level")
+	_setted_cur_level(g.cur_level)
 	var player_stats = g.player.get_node("Stats")
 	player_stats.connect("setted_max_hp", self, "_setted_max_hp")
 	player_stats.connect("setted_hp", self, "_setted_hp")
@@ -21,3 +23,6 @@ func _setted_hp(hp):
 
 func _setted_dmg(dmg):
 	$DmgTab/Label.text = str(dmg)
+
+func _setted_cur_level(num):
+	$CurLevelTab/Label.text = str(num)
