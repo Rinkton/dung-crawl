@@ -23,8 +23,6 @@ const to_place = [
 ]
 const end = 10
 
-var generated = []
-
 
 func _ready():
 	randomize()
@@ -32,21 +30,14 @@ func _ready():
 	generate()
 
 
-func generate(player_exclude_pos=null):
+func generate():
+	clear_all_but_player()
 	var exclude_poses = []
-	if player_exclude_pos != null:
-		var i = 0
-		for c in generated:
-			if is_instance_valid(c) and c.name == "Player":
-				generated.remove(i)
-			i+=1
+	if g.player!=null:
+		var player_exclude_pos = u.pos2game_pos(g.player.pre_pos + g.player.dir * u.block)
 		exclude_poses.append(player_exclude_pos)
-	for g in generated:
-		if is_instance_valid(g):
-			g.queue_free()
-	generated.clear()
 	for X in exclude:
-		if X == PLAYER and player_exclude_pos != null:
+		if X == PLAYER and g.player!=null:
 			continue
 		var pos
 		var just_there := true
@@ -55,26 +46,31 @@ func generate(player_exclude_pos=null):
 			just_there = false
 		var x = X.instance()
 		g.game.call_deferred("add_child", x)
-		generated.append(x)
 		x.global_position = global_position + pos * u.block
 		exclude_poses.append(pos)
-		
 	var pos = Vector2(0, 0)
 	var sum_of_scores = get_sum_of_scores()
 	while pos.y < end:
 		var rand_val = randi() % sum_of_scores
 		var x = get_object_by_rand_val(rand_val)
+		while pos in exclude_poses:
+			pos = plus_to_pos(pos)
 		if x != null:
 			g.game.call_deferred("add_child", x)
-			generated.append(x)
 			x.global_position = global_position + pos * u.block
-		var just_there := true
-		while just_there or pos in exclude_poses:
-			if pos.x == end-1:
-				pos = Vector2(0, pos.y+1)
-			else:
-				pos.x+=1
-			just_there = false
+		pos = plus_to_pos(pos)
+
+func clear_all_but_player():
+	for area in $Area2D.get_overlapping_areas():
+		if area is Actable:
+			area.queue_free()
+
+func plus_to_pos(pos):
+	if pos.x == end-1:
+		pos = Vector2(0, pos.y+1)
+	else:
+		pos.x+=1
+	return pos
 
 func get_sum_of_scores():
 	var sum = 0
