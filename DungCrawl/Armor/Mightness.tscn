@@ -6,7 +6,7 @@
 
 [node name="Mightness" type="Area2D"]
 script = ExtResource( 1 )
-max_hp = 20
+ap = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

@@ -9,9 +9,11 @@ func _ready():
 	var player_stats = g.player.get_node("Stats")
 	player_stats.connect("setted_max_hp", self, "_setted_max_hp")
 	player_stats.connect("setted_hp", self, "_setted_hp")
+	player_stats.connect("setted_ap", self, "_setted_ap")
 	player_stats.connect("setted_dmg", self, "_setted_dmg")
 	_setted_max_hp(player_stats.max_hp)
 	_setted_hp(player_stats.hp)
+	_setted_ap(player_stats.ap)
 	_setted_dmg(player_stats.dmg)
 
 
@@ -20,6 +22,9 @@ func _setted_max_hp(max_hp):
 
 func _setted_hp(hp):
 	$HpTab/Label.text = str(hp)
+
+func _setted_ap(ap):
+	$ApTab/Label.text = str(ap)
 
 func _setted_dmg(dmg):
 	$DmgTab/Label.text = str(dmg)

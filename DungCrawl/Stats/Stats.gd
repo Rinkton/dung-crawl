@@ -8,10 +8,12 @@ onready var entity = get_parent()
 onready var hp = max_hp setget set_hp
 
 export var max_hp := 10 setget set_max_hp
+export var ap := 0 setget set_ap
 export var dmg := 1 setget set_dmg
 
 signal setted_hp(hp)
 signal setted_max_hp(max_hp)
+signal setted_ap(ap)
 signal setted_dmg(dmg)
 
 
@@ -40,6 +42,10 @@ func set_max_hp(val):
 	max_hp = val
 	check_hp_and_max_hp()
 	emit_signal("setted_max_hp", max_hp)
+
+func set_ap(val):
+	ap = val
+	emit_signal("setted_ap", ap)
 
 func set_dmg(val):
 	dmg = val
