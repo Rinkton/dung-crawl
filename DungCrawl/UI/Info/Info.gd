@@ -1,18 +1,27 @@
 extends Node2D
 
 
+var show := false
+
+
 func _ready():
 	off()
+
+func _process(delta):
+	if show or not $Timer.is_stopped():
+		$NinePatchRect.rect_size = $Label.rect_size + $Label.rect_size * 0.1
+		$NinePatchRect.mouse_filter = Control.MOUSE_FILTER_STOP
+		visible = true
+	else:
+		$NinePatchRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		visible = false
 
 
 func on(pos, text):
 	global_position = pos
 	$Label.text = text
-	yield(get_tree().create_timer(0,1), "timeout")
-	$NinePatchRect.rect_size = $Label.rect_size + $Label.rect_size * 0.1
-	$NinePatchRect.mouse_filter = Control.MOUSE_FILTER_STOP
-	visible = true
+	show = true
 
 func off():
-	$NinePatchRect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	visible = false
+	show = false
+	$Timer.start()

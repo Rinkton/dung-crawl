@@ -6,3 +6,9 @@ func act(player):
 	var generator = g.game.get_node("Generator")
 	generator.generate()
 	queue_free()
+
+func get_desc():
+	return """
+	Moves you to another, 
+	more deeper level
+	"""

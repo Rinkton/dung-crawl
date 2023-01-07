@@ -17,4 +17,4 @@ func get_desc():
 	return """
 	name = {name}
 	dmg = {dmg}
-	""".format([["name", name], ["dmg", dmg]])
+	""".format([["name", u.delete_numeration_in_name(name)], ["dmg", dmg]])

@@ -29,17 +29,21 @@ func get_desc():
 	var player_dmg = player_stats.dmg
 	var self_hp = self_stats.hp
 	var self_dmg = self_stats.dmg
+	var fight = fight(player_hp, player_ap, player_dmg, self_hp, self_dmg)
 	return """
 	name = {name}
 	hp = {hp}
 	dmg = {dmg}
-	your hp after battle = {fight}
-	""".format([["name", name], ["hp", self_stats.hp], ["dmg", self_stats.dmg], 
-	["fight", fight(player_hp, player_ap, player_dmg, self_hp, self_dmg)]])
+	your hp after battle = {fight0}
+	your ap after battle = {fight1}
+	""".format([["name", u.delete_numeration_in_name(name)], ["hp", self_stats.hp], ["dmg", self_stats.dmg], 
+	["fight0", fight[0]], ["fight1", fight[1]]])
 
 func fight(player_hp, player_ap, player_dmg, self_hp, self_dmg):
 	var final_dmg_to_player = ceil(float(self_hp) / player_dmg) * self_dmg
 	if final_dmg_to_player <= player_ap:
 		return [player_hp, player_ap - final_dmg_to_player]
 	else:
-		return [player_hp - (final_dmg_to_player - player_ap), 0]
+		var final_player_hp = player_hp - (final_dmg_to_player - player_ap)
+		final_player_hp = 0 if final_player_hp < 0 else final_player_hp
+		return [final_player_hp, 0]

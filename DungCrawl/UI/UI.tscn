@@ -26,6 +26,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="MaxHpTab" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 94.0
 margin_top = 7.0
 margin_right = 120.0

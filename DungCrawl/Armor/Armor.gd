@@ -17,4 +17,4 @@ func get_desc():
 	return """
 	name = {name}
 	armor points = {ap}
-	""".format([["name", name], ["ap", ap]])
+	""".format([["name", u.delete_numeration_in_name(name)], ["ap", ap]])

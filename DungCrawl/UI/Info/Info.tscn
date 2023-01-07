@@ -26,3 +26,7 @@ margin_bottom = 33.0
 rect_scale = Vector2( 0.15, 0.15 )
 theme = ExtResource( 3 )
 text = "hghh"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
