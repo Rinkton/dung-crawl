@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Enemies/Enemy.gd"
+}, {
+"base": "Node",
+"class": "Spawn",
+"language": "GDScript",
+"path": "res://Spawn.gd"
 } ]
 _global_script_class_icons={
 "Actable": "",
-"Enemy": ""
+"Enemy": "",
+"Spawn": ""
 }
 
 [application]
