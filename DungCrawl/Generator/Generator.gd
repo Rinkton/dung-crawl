@@ -7,17 +7,17 @@ const to_place = [
 	[preload("res://Armor/Clothes.tscn"), 20],
 	[preload("res://Armor/Corslet.tscn"), 5],
 	[preload("res://Armor/Mightness.tscn"), 2],
-
+	
 	[preload("res://Enemies/Slime.tscn"), 100],
 	[preload("res://Enemies/Snake.tscn"), 50],
 	[preload("res://Enemies/Zombie.tscn"), 50],
 	[preload("res://Enemies/Demon.tscn"), 10],
-
-	[preload("res://Potion/Potion.tscn"), 35],
-
+	
 	[preload("res://Weapons/Stick.tscn"), 20],
 	[preload("res://Weapons/Sword.tscn"), 5],
 	[preload("res://Weapons/Halberd.tscn"), 1],
+	
+	[preload("res://Potion/Potion.tscn"), 35],
 	
 	[null, 400],
 ]
