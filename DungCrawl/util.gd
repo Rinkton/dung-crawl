@@ -57,3 +57,9 @@ func sum(array):
 		 sum += element
 	return sum
 
+func get_actable_children_in_game():
+	var children_by_class = []
+	for child in g.game.get_children():
+		if child is Actable:
+			children_by_class.append(child)
+	return children_by_class
