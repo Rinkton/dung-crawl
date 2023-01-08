@@ -13,6 +13,8 @@ func act(player):
 	var final_player_points = fight(player_hp, player_ap, player_dmg, self_hp, self_dmg)
 	player_stats.hp = final_player_points[0]
 	player_stats.ap = final_player_points[1]
+	if player_dmg > 1:
+		player_stats.dmg-=1
 	if player_stats.hp > 0:
 		var audio = AudioStreamPlayer.new()
 		get_parent().add_child(audio)
@@ -39,6 +41,7 @@ func get_desc():
 	""".format([["name", u.delete_numeration_in_name(name)], ["hp", self_stats.hp], ["dmg", self_stats.dmg], 
 	["fight0", fight[0]], ["fight1", fight[1]]])
 
+# it's don't do fight by itself, just returns results of battle if the battle will happen
 func fight(player_hp, player_ap, player_dmg, self_hp, self_dmg):
 	var final_dmg_to_player = ceil(float(self_hp) / player_dmg) * self_dmg
 	if final_dmg_to_player <= player_ap:
