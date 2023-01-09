@@ -12,3 +12,5 @@ It was made on Godot_v3.5.1 .
 All code and sprites I was made by myself.
 
 The sounds and music were brought from Freesound under the Creative Commons 0 license.
+
+Game tip: Move the mouse over the object to see its description, then, if you want to see other objects of this type you can hold shift.
