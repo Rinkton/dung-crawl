@@ -2,6 +2,7 @@ extends Node2D
 
 
 var show := false
+# TODO: Since the special control node for its had appeared it's don't need the code of this hard ain't it?
 
 
 func _ready():

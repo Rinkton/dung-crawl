@@ -8,9 +8,14 @@ var had_off_many_visibles := false
 
 func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
+	var on_mouse_control = Control.new()
+	on_mouse_control.rect_position = Vector2(-4, -4)
+	on_mouse_control.rect_size = Vector2(8, 8)
+	on_mouse_control.connect("mouse_entered", self, "_mouse_entered")
+	on_mouse_control.connect("mouse_exited", self, "_mouse_exited")
+	add_child(on_mouse_control)
 	connect("area_entered", self, "_area_entered")
-	connect("mouse_entered", self, "_mouse_entered")
-	connect("mouse_exited", self, "_mouse_exited")
+	
 
 func _process(_delta):
 	get_node("Sprite").z_index = global_position.y
